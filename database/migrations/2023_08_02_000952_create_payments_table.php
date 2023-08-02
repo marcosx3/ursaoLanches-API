@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('CASCADE')->onUpdate('CASCADE');
-            $table->string('type'); // [card,cash,pix]
+            $table->string('type'); // [0 => card,1 => cash, 2 =>pix]
+            $table->string('status'); // [0 => Em Andamento, 1 => Finalizado,2 => Cancelado]
             $table->timestamps();
         });
     }
